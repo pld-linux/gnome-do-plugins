@@ -1,12 +1,12 @@
 %include	/usr/lib/rpm/macros.mono
 Summary:	Plugins for gnome-do
 Name:		gnome-do-plugins
-Version:	0.4.0
-Release:	2
+Version:	0.8.0
+Release:	1
 License:	GPL v3
 Group:		X11/Applications
-Source0:	https://launchpad.net/do/trunk/0.4/+download/do-plugins-%{version}.tar.gz
-# Source0-md5:	0e3901a07e45ec6ebd26ce76fcea76a6
+Source0:	http://edge.launchpad.net/do-plugins/trunk/0.8.0/+download/%{name}-%{version}.tar.gz
+# Source0-md5:	4d12870e882d4d6881a60d55bdb5729f
 URL:		http://do.davebsd.com/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -15,18 +15,20 @@ BuildRequires:	dotnet-gnome-sharp-devel
 BuildRequires:	dotnet-gtk-sharp2-devel
 BuildRequires:	dotnet-ndesk-dbus-glib-sharp-devel
 BuildRequires:	dotnet-ndesk-dbus-sharp-devel
+BuildRequires:	dotnet-flickrnet
 BuildRequires:	gnome-do-devel
 BuildRequires:	mono-csharp >= 1.1.13
+BuildRequires:	monodevelop >= 1.9.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Plugins for gnome-do.
 
 %prep
-%setup -q -n do-plugins-%{version}
+%setup -q
 
 %build
-%{__aclocal}
+%{__aclocal} -I m4/shamrock
 %{__autoconf}
 %{__automake}
 %configure
@@ -48,22 +50,7 @@ rm -rf $RPM_BUILD_ROOT
 # -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS
-%{_datadir}/gnome-do/plugins/Amarok.dll
-%{_datadir}/gnome-do/plugins/AppendTextAction.dll
-%{_datadir}/gnome-do/plugins/Banshee.dll
-%{_datadir}/gnome-do/plugins/Epiphany.dll
-%{_datadir}/gnome-do/plugins/Evolution.dll
-%{_datadir}/gnome-do/plugins/EyeOfGNOMEPlaySlideshowAction.dll
-%{_datadir}/gnome-do/plugins/File.dll
-%{_datadir}/gnome-do/plugins/GNOME-Session.dll
-%{_datadir}/gnome-do/plugins/GoogleCalculatorAction.dll
-%{_datadir}/gnome-do/plugins/GoogleMapAction.dll
-%{_datadir}/gnome-do/plugins/Launchpad.dll
-%{_datadir}/gnome-do/plugins/LocateFiles.dll
-%{_datadir}/gnome-do/plugins/OpenSearch.dll
-%{_datadir}/gnome-do/plugins/Pastebin.dll
-%{_datadir}/gnome-do/plugins/Pidgin.dll
-%{_datadir}/gnome-do/plugins/Rhythmbox.dll
-%{_datadir}/gnome-do/plugins/SSH.dll
-%{_datadir}/gnome-do/plugins/StockQuoteAction.dll
-%{_datadir}/gnome-do/plugins/Thunderbird.dll
+%{_datadir}/gnome-do/plugins/*.dll
+%{_datadir}/gnome-do/plugins/*.mdb
+%{_datadir}/gnome-do/plugins/*.mpack
+%{_datadir}/gnome-do/plugins/*.mrep

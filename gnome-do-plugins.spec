@@ -1,12 +1,12 @@
 %include	/usr/lib/rpm/macros.mono
 Summary:	Plugins for gnome-do
 Name:		gnome-do-plugins
-Version:	0.8.0
+Version:	0.8.1.1
 Release:	1
 License:	GPL v3
 Group:		X11/Applications
-Source0:	http://edge.launchpad.net/do-plugins/trunk/0.8.0/+download/%{name}-%{version}.tar.gz
-# Source0-md5:	4d12870e882d4d6881a60d55bdb5729f
+Source0: http://edge.launchpad.net/do-plugins/0.8/0.8.1/+download/gnome-do-plugins-0.8.1.1.tar.gz
+# Source0-md5:	222c3782ee9b8d0b4b759a1bc9dc895e
 URL:		http://do.davebsd.com/
 BuildRequires:	autoconf
 BuildRequires:	automake

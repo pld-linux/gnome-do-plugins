@@ -1,12 +1,12 @@
 %include	/usr/lib/rpm/macros.mono
 Summary:	Plugins for gnome-do
 Name:		gnome-do-plugins
-Version:	0.8.1.1
+Version:	0.8.2
 Release:	1
 License:	GPL v3
 Group:		X11/Applications
-Source0: http://edge.launchpad.net/do-plugins/0.8/0.8.1/+download/gnome-do-plugins-0.8.1.1.tar.gz
-# Source0-md5:	222c3782ee9b8d0b4b759a1bc9dc895e
+Source0: http://edge.launchpad.net/do-plugins/0.8/0.8.2/+download/%{name}-%{version}.tar.gz
+# Source0-md5:	6e79a666619aae1b1e2916f0fe364d94
 URL:		http://do.davebsd.com/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -17,8 +17,8 @@ BuildRequires:	dotnet-ndesk-dbus-glib-sharp-devel
 BuildRequires:	dotnet-ndesk-dbus-sharp-devel
 BuildRequires:	dotnet-flickrnet
 BuildRequires:	gnome-do-devel
+BuildRequires:	mono-addins-devel
 BuildRequires:	mono-csharp >= 1.1.13
-BuildRequires:	monodevelop >= 1.9.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -40,17 +40,14 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-#%find_lang %{name} --with-gnome
+%find_lang %{name} --with-gnome
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
-# -f %{name}.lang
 %defattr(644,root,root,755)
 %doc AUTHORS
-%{_datadir}/gnome-do/plugins/*.dll
-%{_datadir}/gnome-do/plugins/*.mdb
-%{_datadir}/gnome-do/plugins/*.mpack
-%{_datadir}/gnome-do/plugins/*.mrep
+%{_libdir}/gnome-do/plugins/*.dll
+%{_libdir}/gnome-do/plugins/*.mdb

@@ -2,7 +2,7 @@
 Summary:	Plugins for gnome-do
 Name:		gnome-do-plugins
 Version:	0.8.2
-Release:	1
+Release:	2
 License:	GPL v3
 Group:		X11/Applications
 Source0: http://edge.launchpad.net/do-plugins/0.8/0.8.2/+download/%{name}-%{version}.tar.gz
@@ -16,7 +16,7 @@ BuildRequires:	dotnet-gtk-sharp2-devel
 BuildRequires:	dotnet-ndesk-dbus-glib-sharp-devel
 BuildRequires:	dotnet-ndesk-dbus-sharp-devel
 BuildRequires:	dotnet-flickrnet
-BuildRequires:	gnome-do-devel
+BuildRequires:	gnome-do-devel >= 0.8.2-3
 BuildRequires:	mono-addins-devel
 BuildRequires:	mono-csharp >= 1.1.13
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)

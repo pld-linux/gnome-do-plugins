@@ -1,12 +1,12 @@
 %include	/usr/lib/rpm/macros.mono
 Summary:	Plugins for gnome-do
 Name:		gnome-do-plugins
-Version:	0.8.2
-Release:	3
+Version:	0.8.2.1
+Release:	1
 License:	GPL v3
 Group:		X11/Applications
-Source0:	http://edge.launchpad.net/do-plugins/0.8/0.8.2/+download/%{name}-%{version}.tar.gz
-# Source0-md5:	6e79a666619aae1b1e2916f0fe364d94
+Source0:	http://edge.launchpad.net/do-plugins/0.8/0.8.2.1/+download/%{name}-%{version}.tar.gz
+# Source0-md5:	32b88c062209e5b107602ccc5df285e7
 Patch0:		%{name}-banshee_indexer.patch
 URL:		http://do.davebsd.com/
 BuildRequires:	autoconf

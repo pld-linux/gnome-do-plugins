@@ -1,0 +1,28 @@
+--- Evolution/src/ContactItemSource.cs	2009-10-12 14:30:04.000000000 -0600
++++ Evolution/src/ContactItemSource.cs	2010-09-01 16:18:37.000000000 -0600
+@@ -37,8 +37,8 @@
+ 		
+ 		public ContactAttribute (string key, string detail)
+ 		{
+-			Key = key;
+-			Detail = detail;
++			this.Key = key;
++			this.Detail = detail;
+ 		}
+ 	}
+ 	
+--- File/src/Do/Do.FilesAndFolders/IndexedFolder.cs	2009-10-12 14:30:04.000000000 -0600
++++ File/src/Do/Do.FilesAndFolders/IndexedFolder.cs	2010-09-01 16:32:36.000000000 -0600
+@@ -37,9 +37,9 @@
+ 		{
+ 			if (path == null) throw new ArgumentNullException ("path");
+ 			
+-			Path = Plugin.UnwrapHomeFolder (path);
+-			Level = level;
+-			Status = status;
++			this.Path = Plugin.UnwrapHomeFolder (path);
++			this.Level = level;
++			this.Status = status;
+ 		}
+ 		
+ 		public IndexedFolder (string path, uint level) : this (path, level, FolderStatus.Indexed)

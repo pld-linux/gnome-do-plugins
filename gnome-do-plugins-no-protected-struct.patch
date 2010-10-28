@@ -1,0 +1,13 @@
+--- gnome-do-plugins-0.8.2.1/Evolution/src/ContactItemSource.cs~	2009-10-12 22:30:04.338393865 +0200
++++ gnome-do-plugins-0.8.2.1/Evolution/src/ContactItemSource.cs	2010-10-28 23:51:20.377307322 +0200
+@@ -32,8 +32,8 @@
+ {
+ 	public struct ContactAttribute
+ 	{
+-		public string Detail { get; protected set; }
+-		public string Key { get; protected set; }
++		public string Detail { get; set; }
++		public string Key { get; set; }
+ 		
+ 		public ContactAttribute (string key, string detail)
+ 		{

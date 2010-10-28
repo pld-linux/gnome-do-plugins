@@ -8,6 +8,7 @@ Group:		X11/Applications
 Source0:	http://edge.launchpad.net/do-plugins/0.8/0.8.2.1/+download/%{name}-%{version}.tar.gz
 # Source0-md5:	32b88c062209e5b107602ccc5df285e7
 Patch0:		%{name}-banshee_indexer.patch
+Patch1:		%{name}-no-protected-struct.patch
 URL:		http://do.davebsd.com/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -34,6 +35,7 @@ Plugins for gnome-do.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__aclocal} -I m4/shamrock

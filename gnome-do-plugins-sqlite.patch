@@ -1,0 +1,28 @@
+--- gnome-do-plugins-0.8.2.1/Firefox/src/PlacesItemSource.cs~	2010-10-29 00:12:58.061536162 +0200
++++ gnome-do-plugins-0.8.2.1/Firefox/src/PlacesItemSource.cs	2010-10-29 00:22:05.146536162 +0200
+@@ -29,7 +29,7 @@
+ using Do.Universe.Common;
+ 
+ using Mono.Addins;
+-using Mono.Data.SqliteClient;
++using Mono.Data.Sqlite;
+ 	
+ namespace Firefox
+ {
+@@ -314,4 +314,4 @@
+ 			}
+ 		}
+ 	}
+-}
+\ No newline at end of file
++}
+--- gnome-do-plugins-0.8.2.1/Firefox/Makefile.am~	2009-10-12 22:30:04.318394319 +0200
++++ gnome-do-plugins-0.8.2.1/Firefox/Makefile.am	2010-10-29 00:22:27.587536162 +0200
+@@ -16,6 +16,6 @@
+ 	System \
+ 	System.Core \
+ 	System.Data \
+-	Mono.Data.SqliteClient \
++	Mono.Data.Sqlite \
+ 	$(DO_PLATFORM_LIBS) \
+ 	$(DO_UNIVERSE_LIBS)

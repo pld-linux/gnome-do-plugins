@@ -11,6 +11,7 @@ Patch0:		%{name}-banshee_indexer.patch
 Patch1:		%{name}-no-protected-struct.patch
 Patch2:		%{name}-cs0834.patch
 Patch3:		%{name}-firefox_iceweasel_rename.patch
+Patch4:		%{name}-sqlite.patch
 URL:		http://do.davebsd.com/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -40,6 +41,7 @@ Plugins for gnome-do.
 %patch1 -p1
 %patch2 -p0
 %patch3 -p1
+%patch4 -p1
 
 %build
 %{__aclocal} -I m4/shamrock

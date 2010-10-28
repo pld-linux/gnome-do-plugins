@@ -1,0 +1,103 @@
+## firefox_iceweasel_rename.dpatch by  <ct@piglets.com>
+##
+## DP: The OpenSearch plugin searches for firefox search plugins,
+## DP: but of course, on a Debian system this is to be found under
+## DP: iceweasel, not firefox.
+## DP:
+## DP: This patch also makes the Firefox bookmarks plugin index
+## DP: Iceweasel bookmarks.
+--- gnome-do-plugins-0.8.2.1.orig/Firefox/src/PlacesItemSource.cs
++++ gnome-do-plugins-0.8.2.1/Firefox/src/PlacesItemSource.cs
+@@ -161,8 +161,13 @@
+ 			profile = null;
+ 			home = Environment.GetFolderPath (Environment.SpecialFolder.Personal);
+ 			
+-			path = Path.Combine (home, ".mozilla/firefox/profiles.ini");
+-			using (StreamReader r = File.OpenText (path)) {
++			path = Path.Combine (home, ".mozilla");
++			if (Directory.Exists (Path.Combine (path, "firefox"))) {
++				path = Path.Combine (path, "firefox");
++			} else if (Directory.Exists (Path.Combine (path, "iceweasel"))) {
++				path = Path.Combine (path, "iceweasel");
++			}
++			using (StreamReader r = File.OpenText (Path.Combine (path, "profiles.ini"))) {
+ 				while ((line = r.ReadLine ()) != null) {
+ 					if (line.StartsWith (BeginDefaultProfile)) {
+ 						break;
+@@ -173,7 +178,7 @@
+ 					}
+ 				}
+ 			}
+-			return new [] {home, ".mozilla", "firefox", profile}.Aggregate (Path.Combine); 
++			return Path.Combine (path, profile); 
+ 		}
+ 
+ 
+--- gnome-do-plugins-0.8.2.1.orig/OpenSearch/src/FirefoxOpenSearchDirectoryProvider.cs
++++ gnome-do-plugins-0.8.2.1/OpenSearch/src/FirefoxOpenSearchDirectoryProvider.cs
+@@ -37,6 +37,9 @@
+ 	/// </summary>
+ 	public class FirefoxOpenSearchDirectoryProvider
+ 	{
++		private static string firefoxPath = "/usr/bin/firefox";
++		private static string iceweaselPath = "/usr/bin/iceweasel";
++		
+ 		private List<string> openSearchPluginDirectories;
+ 		
+ 		/// <summary>
+@@ -82,11 +85,17 @@
+ 				// for installing in different directories. We could certainly shell
+ 				// out and call which or something...
+ 				string beginLibDir = "LIBDIR=";
+-				string binFile = "/usr/bin/firefox";
++				string binFile = "";
+ 				string line, libDir;		
+ 				
+ 				libDir = null;
+ 				
++				if (File.Exists (firefoxPath)) {
++					binFile = firefoxPath;
++				} else if (File.Exists (iceweaselPath)) {
++					binFile = iceweaselPath;
++				}
++				
+ 				using (StreamReader r = File.OpenText (binFile)) {
+ 					while (null != (line = r.ReadLine ())) {
+ 						if (line.StartsWith (beginLibDir)) {
+@@ -111,6 +120,18 @@
+ 			return null;
+ 		}
+ 		
++		private string UserBrowserPath {
++			get {
++				string mozillaPath = Path.Combine (Environment.GetFolderPath (Environment.SpecialFolder.Personal), ".mozilla");
++				if (Directory.Exists (Path.Combine (mozillaPath, "firefox"))) {
++				    mozillaPath = Path.Combine (mozillaPath, "firefox");
++				} else if (Directory.Exists (Path.Combine (mozillaPath, "iceweasel"))) {
++					mozillaPath = Path.Combine (mozillaPath, "iceweasel");
++				}
++				return mozillaPath;
++			}
++		}
++			
+ 		/// <summary>
+ 		/// Retrieves the profile plugin directory, which is where the 
+ 		/// user installed OpenSearch plugins are located.
+@@ -128,7 +149,7 @@
+ 				
+ 				profile = null;				
+ 				
+-				profilePath = Path.Combine (Environment.GetFolderPath (Environment.SpecialFolder.Personal), ".mozilla/firefox/profiles.ini");
++				profilePath = Path.Combine (UserBrowserPath, "profiles.ini");
+ 				using (StreamReader r = File.OpenText (profilePath)) {
+ 					while (null != (line = r.ReadLine ())) {
+ 						if (line.StartsWith (beginDefaultProfile)) break;
+@@ -141,7 +162,7 @@
+ 				}
+ 							
+ 				if(profile != null) {
+-					string path = Path.Combine (Environment.GetFolderPath (Environment.SpecialFolder.Personal), ".mozilla/firefox");
++					string path = UserBrowserPath;
+ 					path = Path.Combine (path, profile);
+ 					path = Path.Combine (path, "searchplugins");
+ 				

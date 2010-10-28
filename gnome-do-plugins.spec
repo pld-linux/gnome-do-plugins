@@ -10,6 +10,7 @@ Source0:	http://edge.launchpad.net/do-plugins/0.8/0.8.2.1/+download/%{name}-%{ve
 Patch0:		%{name}-banshee_indexer.patch
 Patch1:		%{name}-no-protected-struct.patch
 Patch2:		%{name}-cs0834.patch
+Patch3:		%{name}-firefox_iceweasel_rename.patch
 URL:		http://do.davebsd.com/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -38,6 +39,7 @@ Plugins for gnome-do.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p0
+%patch3 -p1
 
 %build
 %{__aclocal} -I m4/shamrock

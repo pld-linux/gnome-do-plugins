@@ -12,11 +12,14 @@ Patch1:		%{name}-no-protected-struct.patch
 Patch2:		%{name}-cs0834.patch
 Patch3:		%{name}-firefox_iceweasel_rename.patch
 Patch4:		%{name}-sqlite.patch
+Patch5:		%{name}-pidgin.patch
+Patch6:		%{name}-gcontacts.patch
 URL:		http://do.davebsd.com/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	dotnet-evolution-sharp-devel
 BuildRequires:	dotnet-flickrnet
+BuildRequires:	dotnet-gdata-sharp-devel
 BuildRequires:	dotnet-gnome-desktop-sharp-devel
 BuildRequires:	dotnet-gnome-keyring-sharp-devel
 BuildRequires:	dotnet-gnome-sharp-devel
@@ -42,6 +45,8 @@ Plugins for gnome-do.
 %patch2 -p0
 %patch3 -p1
 %patch4 -p1
+%patch5 -p1
+%patch6 -p1
 
 %build
 %{__aclocal} -I m4/shamrock

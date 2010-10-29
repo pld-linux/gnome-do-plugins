@@ -1,0 +1,11 @@
+--- gnome-do-plugins-0.8.2.1/GoogleContacts/src/GMailClient.cs~	2010-10-29 10:44:24.176080797 +0200
++++ gnome-do-plugins-0.8.2.1/GoogleContacts/src/GMailClient.cs	2010-10-29 10:50:53.917080798 +0200
+@@ -77,7 +77,7 @@
+ 
+ 					AddDetails (buddy, entry.Emails);
+ 					AddDetails (buddy, entry.Phonenumbers);
+-					AddDetails (buddy, entry.PostalAddresses);
++//					AddDetails (buddy, entry.PostalAddresses);
+ 					
+ 					contacts.Add (buddy);
+ 				}

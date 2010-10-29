@@ -1,0 +1,11 @@
+--- gnome-do-plugins-0.8.2.1/Pidgin/src/PidginContactItemSource.cs~	2010-10-29 10:25:33.924080798 +0200
++++ gnome-do-plugins-0.8.2.1/Pidgin/src/PidginContactItemSource.cs	2010-10-29 10:26:02.551080797 +0200
+@@ -241,7 +241,7 @@
+ 					}
+ 					//if the alias is still null, let's try to get the server alias
+ 					if (string.IsNullOrEmpty (alias))
+-					    alias = Pidgin.GetBuddyServerAlias (protos[proto]) ?? null;
++					    alias = Pidgin.GetBuddyServerAlias (protos[proto]);
+ 					break;
+ 				//let's pick up the custom icon as the metacontact's icon
+ 				case "setting":

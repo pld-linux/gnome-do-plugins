@@ -2,7 +2,7 @@
 Summary:	Plugins for gnome-do
 Name:		gnome-do-plugins
 Version:	0.8.2.1
-Release:	1
+Release:	2
 License:	GPL v3
 Group:		X11/Applications
 Source0:	http://edge.launchpad.net/do-plugins/0.8/0.8.2.1/+download/%{name}-%{version}.tar.gz

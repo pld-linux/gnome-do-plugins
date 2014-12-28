@@ -27,7 +27,7 @@ BuildRequires:	dotnet-gtk-sharp2-devel
 BuildRequires:	dotnet-ndesk-dbus-glib-sharp-devel
 BuildRequires:	dotnet-ndesk-dbus-sharp-devel
 BuildRequires:	dotnet-notify-sharp-devel
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel
 BuildRequires:	gnome-do-devel >= 0.8.2-3
 BuildRequires:	intltool

@@ -1,4 +1,3 @@
-%include	/usr/lib/rpm/macros.mono
 Summary:	Plugins for gnome-do
 Name:		gnome-do-plugins
 Version:	0.8.2.1
